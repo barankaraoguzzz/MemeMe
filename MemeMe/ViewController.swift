@@ -15,5 +15,15 @@ class ViewController: UIViewController {
     }
 
 
+    @IBAction func rightButton(_ sender: Any) {
+        appContainer.imagePicker.showImagePicker(fromViewController: self, sourceType: .camera) { (image) in
+            print(image)
+        }
+    }
+    @IBAction func leftButton(_ sender: Any) {
+        appContainer.imagePicker.showImagePicker(fromViewController: self, sourceType: .photoLibrary) { (image) in
+            print(image)
+        }
+    }
 }
 

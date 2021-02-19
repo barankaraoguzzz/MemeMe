@@ -15,6 +15,8 @@
 		E044C79325DE80360063E84B /* MemeMeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044C79225DE80360063E84B /* MemeMeTests.swift */; };
 		E044C79E25DE80360063E84B /* MemeMeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044C79D25DE80360063E84B /* MemeMeUITests.swift */; };
 		E044C7ED25DE85F90063E84B /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044C7EC25DE85F90063E84B /* AppContainer.swift */; };
+		E044C7FE25DE88170063E84B /* AppImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044C7FD25DE88170063E84B /* AppImagePicker.swift */; };
+		E044C80425DE8A4C0063E84B /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044C80325DE8A4C0063E84B /* Typealiases.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		E044C79D25DE80360063E84B /* MemeMeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeMeUITests.swift; sourceTree = "<group>"; };
 		E044C79F25DE80360063E84B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E044C7EC25DE85F90063E84B /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
+		E044C7FD25DE88170063E84B /* AppImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppImagePicker.swift; sourceTree = "<group>"; };
+		E044C80325DE8A4C0063E84B /* Typealiases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,7 @@
 		E044C77A25DE80340063E84B /* MemeMe */ = {
 			isa = PBXGroup;
 			children = (
+				E044C80225DE8A420063E84B /* Helpers */,
 				E044C7EB25DE85EF0063E84B /* AppContainers */,
 				E044C77B25DE80340063E84B /* AppDelegate.swift */,
 				E044C77F25DE80340063E84B /* ViewController.swift */,
@@ -132,8 +137,17 @@
 			isa = PBXGroup;
 			children = (
 				E044C7EC25DE85F90063E84B /* AppContainer.swift */,
+				E044C7FD25DE88170063E84B /* AppImagePicker.swift */,
 			);
 			path = AppContainers;
+			sourceTree = "<group>";
+		};
+		E044C80225DE8A420063E84B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				E044C80325DE8A4C0063E84B /* Typealiases.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,7 +281,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E044C78025DE80340063E84B /* ViewController.swift in Sources */,
+				E044C7FE25DE88170063E84B /* AppImagePicker.swift in Sources */,
 				E044C7ED25DE85F90063E84B /* AppContainer.swift in Sources */,
+				E044C80425DE8A4C0063E84B /* Typealiases.swift in Sources */,
 				E044C77C25DE80340063E84B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -447,6 +463,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HKDD54DDN2;
 				INFOPLIST_FILE = MemeMe/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -466,6 +483,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HKDD54DDN2;
 				INFOPLIST_FILE = MemeMe/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
