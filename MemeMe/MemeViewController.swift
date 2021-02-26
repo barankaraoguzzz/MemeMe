@@ -127,6 +127,10 @@ extension MemeViewController: UITextFieldDelegate {
         return true
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.text = ""
+    }
+    
     @objc func keyboardWillShow(_ notification: Notification) {
          self.view.frame.origin.y -= getKeyboardHeight(notification)
     }
