@@ -9,7 +9,10 @@ import UIKit
 
 class ShareManager {
     
-    func startShareWith(from fromVC: UIViewController?, withSharingTypeProtocol sharingType: SharingType) {
+    private var completionCallback: Callback<Bool>?
+    
+    func startShareWith(from fromVC: UIViewController?, withSharingTypeProtocol sharingType: SharingType, completion: @escaping Callback<Bool>) {
+        self.completionCallback = completion
         
         var items: [AnyHashable] = []
         
@@ -63,6 +66,7 @@ class ShareManager {
         
         // access the completion handler
         controller?.completionWithItemsHandler = { activityType, completed, returnedItems, error in
+            self.completionCallback?(completed)
             if completed {
                 // user shared an item
                 print("We used activity type\(activityType ?? UIActivity.ActivityType(rawValue: ""))")

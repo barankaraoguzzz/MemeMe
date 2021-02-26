@@ -31,28 +31,22 @@ class MemeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.addObserver()
+        self.subscribeToKeyboardNotifications()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.removeObserver()
+        self.unsubscribeFromKeyboardNotifications()
     }
     
     ///IBAction
     
     @IBAction func openCameraAct(_ sender: Any) {
-        appContainer.imagePicker.showImagePicker(fromViewController: self, sourceType: .camera) { (image) in
-            self.imageView.image = image
-            self.buttonShare.isEnabled = true
-        }
+        self.presentPickerViewController(source: .camera)
     }
     
     @IBAction func openGaleryAct(_ sender: Any) {
-        appContainer.imagePicker.showImagePicker(fromViewController: self, sourceType: .photoLibrary) { (image) in
-            self.imageView.image = image
-            self.buttonShare.isEnabled = true
-        }
+        self.presentPickerViewController(source: .photoLibrary)
     }
     
     @IBAction func cancelButtonAct(_ sender: Any) {
@@ -63,10 +57,16 @@ class MemeViewController: UIViewController {
     }
     
     @IBAction func shareButtonAct(_ sender: Any) {
-        appContainer.shareManeger.startShareWith(from: self, withSharingTypeProtocol: .image(image: generateMemedImage()))
+        appContainer.shareManeger.startShareWith(from: self, withSharingTypeProtocol: .image(image: generateMemedImage())) { (isCompleted) in
+            if isCompleted {
+                self.save()
+            }
+        }
     }
     
-    // MARK: - Private confiure methods
+    // MARK: - Private Methods
+    
+    ///confiure methods
     
     private func configureButtons() {
         buttonCamera.isEnabled = appContainer.imagePicker.isAvailable(by: .camera)
@@ -78,14 +78,27 @@ class MemeViewController: UIViewController {
         self.textFieldBottom.delegate = self
     }
     
+    ///Helpers
+    
+    func presentPickerViewController(source: UIImagePickerController.SourceType) {
+        appContainer.imagePicker.showImagePicker(fromViewController: self, sourceType: source) { (image) in
+            self.imageView.image = image
+            self.buttonShare.isEnabled = true
+        }
+    }
+    
+    func save() {
+        let meme = Meme(topText: textFieldTop.text, bottomText: textFieldBottom.text, originalImage: imageView.image, memedImage: generateMemedImage())
+    }
+    
     /// Observers
     
-    private func addObserver() {
+    private func subscribeToKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil);
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil);
     }
     
-    private func removeObserver() {
+    private func unsubscribeFromKeyboardNotifications() {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
