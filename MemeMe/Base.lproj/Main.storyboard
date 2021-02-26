@@ -93,9 +93,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="buttonCamera" destination="irZ-ir-foZ" id="90k-gR-vi6"/>
+                        <outlet property="buttonShare" destination="odT-sk-PIu" id="lyA-PL-LZh"/>
                         <outlet property="imageView" destination="AlU-xP-7mt" id="VUF-lk-tUI"/>
                         <outlet property="textFieldBottom" destination="2VY-tF-5VF" id="rDs-UP-BHx"/>
                         <outlet property="textFieldTop" destination="LaT-2B-pmK" id="OPr-oo-5u6"/>
+                        <outlet property="toolBar" destination="k3N-dF-07A" id="Lbe-I6-fID"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

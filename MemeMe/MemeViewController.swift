@@ -17,6 +17,8 @@ class MemeViewController: UIViewController {
     @IBOutlet weak var textFieldTop: MemeTextFields!
     @IBOutlet weak var textFieldBottom: MemeTextFields!
     @IBOutlet weak var buttonCamera: UIBarButtonItem!
+    @IBOutlet weak var buttonShare: UIBarButtonItem!
+    @IBOutlet weak var toolBar: UIToolbar!
     
     
     // MARK: - LifeCycle
@@ -42,27 +44,33 @@ class MemeViewController: UIViewController {
     @IBAction func openCameraAct(_ sender: Any) {
         appContainer.imagePicker.showImagePicker(fromViewController: self, sourceType: .camera) { (image) in
             self.imageView.image = image
+            self.buttonShare.isEnabled = true
         }
     }
     
     @IBAction func openGaleryAct(_ sender: Any) {
         appContainer.imagePicker.showImagePicker(fromViewController: self, sourceType: .photoLibrary) { (image) in
             self.imageView.image = image
+            self.buttonShare.isEnabled = true
         }
     }
     
     @IBAction func cancelButtonAct(_ sender: Any) {
-        
+        self.imageView.image = nil
+        self.textFieldTop.text = "TOP"
+        self.textFieldBottom.text = "BOTTOM"
+        self.buttonShare.isEnabled = false
     }
     
     @IBAction func shareButtonAct(_ sender: Any) {
-        
+        appContainer.shareManeger.startShareWith(from: self, withSharingTypeProtocol: .image(image: generateMemedImage()))
     }
     
     // MARK: - Private confiure methods
     
     private func configureButtons() {
         buttonCamera.isEnabled = appContainer.imagePicker.isAvailable(by: .camera)
+        buttonShare.isEnabled = imageView.image != nil
     }
     
     private func configureTextFields() {
@@ -115,6 +123,25 @@ class MemeViewController: UIViewController {
             return frame.origin.y + frame.size.height
         }
         return 0
+    }
+    
+    ///Memed Images
+    func generateMemedImage() -> UIImage {
+
+        self.toolBar.isHidden = true
+        self.navigationController?.isNavigationBarHidden = true
+
+        // Render view to an image
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+
+        
+        self.toolBar.isHidden = false
+        self.navigationController?.isNavigationBarHidden = false
+
+        return memedImage
     }
 }
 

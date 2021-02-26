@@ -11,5 +11,5 @@ let appContainer = AppContainer()
 
 class AppContainer {
     let imagePicker = AppImagePicker()
-    
+    let shareManeger = ShareManager()
 }
