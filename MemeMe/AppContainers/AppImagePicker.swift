@@ -22,7 +22,10 @@ class AppImagePicker: NSObject {
         self.didSelectImageFromPhotoLibraryCallback = callback
         fromViewController.present(getImagePickerViewController(with: sourceType), animated: true, completion: nil)
     }
-
+    
+    public func isAvailable(by sourceType: UIImagePickerController.SourceType) -> Bool {
+        return UIImagePickerController.isSourceTypeAvailable(sourceType)
+    }
     
     /// Private methods
     

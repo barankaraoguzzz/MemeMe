@@ -7,17 +7,29 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MemeViewController: UIViewController {
 
+    ///Constants
+    
     ///IBOutlet veriables
     
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var labelTop: UITextField!
-    @IBOutlet weak var labelBottom: UITextField!
+    @IBOutlet weak var textFieldTop: MemeTextFields!
+    @IBOutlet weak var textFieldBottom: MemeTextFields!
+    @IBOutlet weak var buttonCamera: UIBarButtonItem!
+    
+    
+    // MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        self.configureButtons()
+        self.configureTextFields()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
     }
     
     ///IBAction
@@ -42,5 +54,18 @@ class ViewController: UIViewController {
         
     }
     
+    // MARK: - Private confiure methods
+    
+    private func configureButtons() {
+        buttonCamera.isEnabled = appContainer.imagePicker.isAvailable(by: .camera)
+    }
+    
+    private func configureTextFields() {
+        self.textFieldTop.delegate = self
+        self.textFieldBottom.delegate = self
+    }
+    
 }
+
+
 
