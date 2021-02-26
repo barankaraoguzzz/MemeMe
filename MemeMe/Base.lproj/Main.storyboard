@@ -19,18 +19,26 @@
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem width="120" style="plain" systemItem="fixedSpace" id="dW2-et-UEs"/>
-                                    <barButtonItem image="camera" catalog="system" id="irZ-ir-foZ"/>
+                                    <barButtonItem image="camera" catalog="system" id="irZ-ir-foZ">
+                                        <connections>
+                                            <action selector="openCameraAct:" destination="BYZ-38-t0r" id="itK-Ap-ARK"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="5ZC-Mm-nCB"/>
-                                    <barButtonItem title="Album" id="dEt-UQ-M3I"/>
+                                    <barButtonItem title="Album" id="dEt-UQ-M3I">
+                                        <connections>
+                                            <action selector="openGaleryAct:" destination="BYZ-38-t0r" id="9NT-LR-3n5"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem width="120" style="plain" systemItem="fixedSpace" id="mLN-73-9FX"/>
                                 </items>
                             </toolbar>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AlU-xP-7mt">
-                                <rect key="frame" x="0.0" y="104" width="414" height="693"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LaT-2B-pmK">
-                                <rect key="frame" x="12" y="120" width="390" height="50"/>
+                                <rect key="frame" x="12" y="104" width="390" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="s1Y-hf-wOP"/>
@@ -40,7 +48,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2VY-tF-5VF">
-                                <rect key="frame" x="16" y="731" width="382" height="50"/>
+                                <rect key="frame" x="16" y="747" width="382" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="5tV-Km-zKw"/>
@@ -54,7 +62,7 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="k3N-dF-07A" secondAttribute="bottom" id="0r8-rg-wcZ"/>
-                            <constraint firstItem="AlU-xP-7mt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="2Sy-mV-wbb"/>
+                            <constraint firstItem="AlU-xP-7mt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="2Sy-mV-wbb"/>
                             <constraint firstItem="2VY-tF-5VF" firstAttribute="bottom" secondItem="AlU-xP-7mt" secondAttribute="bottom" constant="-16" id="34M-bN-ZbI"/>
                             <constraint firstItem="LaT-2B-pmK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="12" id="Agc-ZW-dhU"/>
                             <constraint firstItem="k3N-dF-07A" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="BaI-D8-Xy4"/>
@@ -63,7 +71,7 @@
                             <constraint firstItem="LaT-2B-pmK" firstAttribute="top" secondItem="AlU-xP-7mt" secondAttribute="top" constant="16" id="J1u-6H-WTa"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2VY-tF-5VF" secondAttribute="trailing" constant="16" id="LV7-6n-b2s"/>
                             <constraint firstItem="k3N-dF-07A" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="QyA-En-t2Z"/>
-                            <constraint firstItem="k3N-dF-07A" firstAttribute="top" secondItem="AlU-xP-7mt" secondAttribute="bottom" constant="16" id="g08-2V-Sun"/>
+                            <constraint firstItem="k3N-dF-07A" firstAttribute="top" secondItem="AlU-xP-7mt" secondAttribute="bottom" id="g08-2V-Sun"/>
                             <constraint firstItem="2VY-tF-5VF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="qip-qO-NBN"/>
                             <constraint firstItem="AlU-xP-7mt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="sKK-fo-fFD"/>
                         </constraints>
@@ -71,15 +79,20 @@
                     <navigationItem key="navigationItem" id="Cxg-eR-BUy">
                         <barButtonItem key="leftBarButtonItem" image="square.and.arrow.up" catalog="system" id="odT-sk-PIu">
                             <connections>
-                                <action selector="leftButton:" destination="BYZ-38-t0r" id="RLU-rp-lOr"/>
+                                <action selector="shareButtonAct:" destination="BYZ-38-t0r" id="JsJ-dG-fVx"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Cancel" id="p2h-bv-vKt">
                             <connections>
-                                <action selector="rightButton:" destination="BYZ-38-t0r" id="hPb-3C-zhw"/>
+                                <action selector="cancelButtonAct:" destination="BYZ-38-t0r" id="Fmc-6q-qQa"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="imageView" destination="AlU-xP-7mt" id="VUF-lk-tUI"/>
+                        <outlet property="labelBottom" destination="2VY-tF-5VF" id="Wkg-gS-5qT"/>
+                        <outlet property="labelTop" destination="LaT-2B-pmK" id="hzL-bx-qVW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
